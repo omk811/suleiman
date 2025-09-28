@@ -4,320 +4,732 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قصيدة سليمان والحمامة - شرح تفاعلي للصف الخامس</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Baloo 2', cursive;
-            font-size: 20px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 50%, #fffaf0 100%);
-            min-height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .page {
+
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #ff9a3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --text: #333;
+            --text-light: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #fff3e0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .teacher-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-1 .section-header {
+            background: linear-gradient(135deg, #4a6fa5, #6b8cbc);
+        }
+
+        .section-2 .section-header {
+            background: linear-gradient(135deg, #ff9a3c, #ffb366);
+        }
+
+        .section-3 .section-header {
+            background: linear-gradient(135deg, #28a745, #5cb85c);
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+        }
+
+        .section-content {
+            padding: 1.5rem;
+        }
+
+        .section-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .section-content ul {
+            padding-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #ff8c1a;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
             display: none;
         }
-        
-        .page.active {
+
+        .content-section.active {
             display: block;
+            animation: fadeIn 0.5s ease;
         }
-        
-        .verse-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
-            background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .verse-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-color: #4f46e5;
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .explanation-box {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
+
+        .verse {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-right: 4px solid var(--primary);
+            transition: var(--transition);
         }
-        
-        .explanation-box.active {
-            max-height: 800px;
+
+        .verse:hover {
+            background: #e9ecef;
         }
-        
-        .dove-animation {
-            animation: fly 4s ease-in-out infinite;
-        }
-        
-        @keyframes fly {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-8px) rotate(1deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            75% { transform: translateY(-8px) rotate(1deg); }
-        }
-        
-        .nav-button {
-            transition: all 0.3s ease;
-            background: linear-gradient(145deg, #4f46e5, #7c3aed);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
-        }
-        
-        .nav-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
-        }
-        
-        .highlight-word {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #6366f1 100%);
-            padding: 4px 8px;
-            border-radius: 6px;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #1e40af 0%, #7e22ce 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .section-gradient-1 {
-            background: linear-gradient(135deg, #93c5fd 0%, #c4b5fd 100%);
-        }
-        
-        .section-gradient-2 {
-            background: linear-gradient(135deg, #fdba74 0%, #f9a8d4 100%);
-        }
-        
-        .section-gradient-3 {
-            background: linear-gradient(135deg, #67e8f9 0%, #a5b4fc 100%);
-        }
-        
-        /* تحسينات للعرض الصفي */
-        .classroom-friendly {
-            color: #1f2937; /* رمادي داكن للقراءة الجيدة */
-            line-height: 1.7;
-        }
-        
-        .large-text {
+
+        .verse-text {
             font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            text-align: center;
         }
-        
-        .clear-contrast {
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e5e7eb;
+
+        .verse-explanation {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #e9ecef;
+            display: none;
+        }
+
+        .verse-explanation.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 500px; }
+        }
+
+        .explanation-title {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-explanation {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 auto;
+        }
+
+        .toggle-explanation:hover {
+            background: var(--secondary);
+        }
+
+        .resources {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .resources h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .resource-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dee2e6;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .resource-links {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen classroom-friendly">
-    <!-- Navigation Bar -->
-    <nav class="glass-card sticky top-0 z-50 border-b border-gray-200">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold gradient-text">قصيدة سليمان والحمامة 🕊️👑</h1>
-                <div class="flex space-x-reverse space-x-3">
-                    <button onclick="showPage('home')" class="nav-button px-6 py-3 text-white rounded-xl font-semibold text-lg">🏠 الرئيسية</button>
-                    <button onclick="showPage('section1')" class="nav-button px-6 py-3 text-white rounded-xl font-semibold text-lg">📜 المقطع الأول</button>
-                    <button onclick="showPage('section2')" class="nav-button px-6 py-3 text-white rounded-xl font-semibold text-lg">👀 المقطع الثاني</button>
-                    <button onclick="showPage('section3')" class="nav-button px-6 py-3 text-white rounded-xl font-semibold text-lg">😢 المقطع الثالث</button>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dove"></i>
+                    <div>
+                        <h1>قصيدة سليمان والحمامة</h1>
+                        <p>شرح تفاعلي للصف الخامس - الشاعر: أحمد شوقي</p>
+                    </div>
+                </div>
+                <div class="teacher-info">
+                    <i class="fas fa-chalkboard-teacher"></i> إعداد الأستاذ: خليل البلوشي
                 </div>
             </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#" class="active" data-target="home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#" data-target="section1"><i class="fas fa-book-open"></i> المقطع الأول</a></li>
+                <li><a href="#" data-target="section2"><i class="fas fa-eye"></i> المقطع الثاني</a></li>
+                <li><a href="#" data-target="section3"><i class="fas fa-sad-tear"></i> المقطع الثالث</a></li>
+                <li><a href="#" data-target="resources"><i class="fas fa-link"></i> روابط مهمة</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <div class="container mx-auto px-4 py-8">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <div class="flex justify-center items-center mb-6">
-                    <div class="text-6xl">👑</div>
-                    <div class="dove-animation text-5xl mx-6">🕊️</div>
-                    <div class="text-6xl">👑</div>
-                </div>
-                <h1 class="text-5xl font-bold text-indigo-800 mb-4">قصيدة سليمان والحمامة</h1>
-                <p class="text-2xl text-gray-700 large-text">شرح تفاعلي للصف الخامس</p>
-                <p class="text-xl text-gray-600 mt-2 large-text">للشاعر: <strong>أحمد شوقي</strong></p>
+    <div class="container">
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h2>شرح تفاعلي لقصيدة "سليمان والحمامة"</h2>
+                <p>قصيدة من النوع القصصي السردي للشاعر الكبير أحمد شوقي، تقدم قصة شيقة تعلمنا قيم الأمانة والإخلاص وتبين عواقب الفضول المفرط</p>
+                <a href="#sections" class="btn btn-accent">ابدأ الرحلة التعليمية <i class="fas fa-arrow-down"></i></a>
             </div>
 
-            <!-- Introduction -->
-            <div class="clear-contrast rounded-2xl p-8 mb-8">
-                <h2 class="text-3xl font-bold gradient-text mb-6 flex items-center">
-                    📖 مقدمة عن القصيدة
-                </h2>
-                <div class="text-xl text-gray-800 leading-relaxed large-text">
-                    <p class="mb-6">قصيدة من النوع <span class="highlight-word">القصصي السردي</span> للشاعر الكبير <strong>أحمد شوقي</strong>. تحكي قصة مهمة عن الأمانة والصدق.</p>
-                    <div class="glass-card p-6 rounded-xl mb-4">
-                        <p class="font-semibold text-gray-800 large-text">القصيدة مقسمة إلى ثلاثة مقاطع، كل مقطع يمثل جزءاً من أجزاء النص السردي:</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sections Overview -->
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div class="clear-contrast rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showPage('section1')">
-                    <div class="text-center">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">📜</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">المقطع الأول</h3>
-                        <p class="text-gray-700 mb-4 text-lg">الحمامة المخلصة</p>
-                        <div class="glass-card p-4 rounded-xl mb-6">
-                            <p class="text-lg font-semibold text-gray-800">🎯 الهدف: تعلم الإخلاص والأمانة</p>
+            <div class="sections-grid" id="sections">
+                <div class="section-card section-1" data-target="section1">
+                    <div class="section-header">
+                        <i class="fas fa-book-open section-icon"></i>
+                        <div>
+                            <h2>المقطع الأول</h2>
+                            <p>الحمامة المخلصة</p>
                         </div>
-                        <button class="section-gradient-1 px-6 py-3 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 w-full text-lg">استكشف المقطع ✨</button>
+                    </div>
+                    <div class="section-content">
+                        <h3>الحمامة المخلصة</h3>
+                        <p>في هذا المقطع نتعرف على الحمامة المخلصة التي تخدم سليمان عليه السلام بإخلاص وأمانة.</p>
+                        <ul>
+                            <li>علاقة الثقة بين سليمان والحمامة</li>
+                            <li>إخلاص الحمامة في خدمتها</li>
+                            <li>مهمة الحمامة كرسولة</li>
+                            <li>تكريم الحمامة في الرسائل</li>
+                        </ul>
+                        <a href="#" class="btn" data-target="section1">استكشف المقطع</a>
                     </div>
                 </div>
 
-                <div class="clear-contrast rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showPage('section2')">
-                    <div class="text-center">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">👀</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">المقطع الثاني</h3>
-                        <p class="text-gray-700 mb-4 text-lg">فضول الحمامة</p>
-                        <div class="glass-card p-4 rounded-xl mb-6">
-                            <p class="text-lg font-semibold text-gray-800">🎯 الهدف: خطر عدم احترام الخصوصية</p>
+                <div class="section-card section-2" data-target="section2">
+                    <div class="section-header">
+                        <i class="fas fa-eye section-icon"></i>
+                        <div>
+                            <h2>المقطع الثاني</h2>
+                            <p>فضول الحمامة</p>
                         </div>
-                        <button class="section-gradient-2 px-6 py-3 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 w-full text-lg">استكشف المقطع 🔍</button>
+                    </div>
+                    <div class="section-content">
+                        <h3>فضول الحمامة</h3>
+                        <p>في هذا المقطع تظهر رغبة الحمامة في معرفة محتوى الرسائل التي تحملها، مما يؤدي إلى خطأ كبير.</p>
+                        <ul>
+                            <li>بداية الفضول والرغبة في المعرفة</li>
+                            <li>فتح الرسالة الأولى - التاج</li>
+                            <li>فتح الرسالة الثانية - الرياض</li>
+                            <li>فتح الرسالة الثالثة - الزعامة</li>
+                        </ul>
+                        <a href="#" class="btn" data-target="section2">استكشف المقطع</a>
                     </div>
                 </div>
 
-                <div class="clear-contrast rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showPage('section3')">
-                    <div class="text-center">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">😢</div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">المقطع الثالث</h3>
-                        <p class="text-gray-700 mb-4 text-lg">الندم والعقاب</p>
-                        <div class="glass-card p-4 rounded-xl mb-6">
-                            <p class="text-lg font-semibold text-gray-800">🎯 الهدف: عواقب الأخطاء</p>
+                <div class="section-card section-3" data-target="section3">
+                    <div class="section-header">
+                        <i class="fas fa-sad-tear section-icon"></i>
+                        <div>
+                            <h2>المقطع الثالث</h2>
+                            <p>الندم والعقاب</p>
                         </div>
-                        <button class="section-gradient-3 px-6 py-3 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 w-full text-lg">استكشف المقطع ⚖️</button>
+                    </div>
+                    <div class="section-content">
+                        <h3>الندم والعقاب</h3>
+                        <p>في هذا المقطع تندم الحمامة على فعلتها وتحاول التغطية على خطئها، لكن الحقيقة تظهر.</p>
+                        <ul>
+                            <li>ندم الحمامة وبكاؤها</li>
+                            <li>محاولة الكذب والتبرير</li>
+                            <li>كشف سليمان للحقيقة</li>
+                            <li>العقاب العادل والحكمة</li>
+                        </ul>
+                        <a href="#" class="btn" data-target="section3">استكشف المقطع</a>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Overall Themes -->
-            <div class="clear-contrast rounded-2xl p-10">
-                <h2 class="text-3xl font-bold mb-8 flex items-center gradient-text">
-                    🌟 الموضوعات الرئيسية للقصيدة
-                </h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="glass-card p-6 rounded-xl hover:scale-105 transition-all duration-300">
-                        <div class="text-4xl mb-4">🤝</div>
-                        <h3 class="font-bold mb-3 text-xl text-gray-800">الأمانة والإخلاص</h3>
-                        <p class="text-gray-700 large-text">أهمية الوفاء بالعهد والإخلاص في العمل</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-xl hover:scale-105 transition-all duration-300">
-                        <div class="text-4xl mb-4">⚖️</div>
-                        <h3 class="font-bold mb-3 text-xl text-gray-800">العدالة والحكمة</h3>
-                        <p class="text-gray-700 large-text">حكمة سليمان عليه السلام في التعامل مع الأخطاء</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- باقي المحتوى (المقاطع الثلاثة) يبقى كما هو مع تعديلات طفيفة على الألوان -->
-    
-    <!-- Section 1 Page -->
-    <div id="section1" class="page">
-        <div class="container mx-auto px-4 py-8">
-            <!-- Section Header -->
-            <div class="section-gradient-1 rounded-2xl shadow-lg p-10 mb-8 text-white">
-                <h1 class="text-4xl font-bold mb-6 flex items-center">
-                    📜 المقطع الأول: الحمامة المخلصة
-                </h1>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="glass-card p-6 rounded-xl">
-                        <p class="text-lg mb-3 large-text">🎯 <strong>الهدف:</strong> تعلم قيمة الإخلاص والأمانة في العمل</p>
-                        <p class="text-lg large-text">📍 <strong>المكان في القصة:</strong> البداية - التعريف بالشخصيات</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-xl">
-                        <p class="text-lg mb-3 large-text">🎭 <strong>الأسلوب البلاغي:</strong> الوصف والسرد</p>
-                        <p class="text-lg large-text">💎 <strong>القيمة المحورية:</strong> الأمانة والإخلاص</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- باقي محتوى المقطع الأول يبقى كما هو -->
+        <section id="section1" class="content-section">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> المقطع الأول: الحمامة المخلصة</h2>
             
-        </div>
-    </div>
+            <div class="verse">
+                <div class="verse-text">
+                    كان ابن داود يُقَرِّبُ في مجالسِهِ حمامَةً
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>سليمان عليه السلام (ابن داود) كان يحب حمامة ويجعلها قريبة منه في مجلسه، مما يدل على الثقة والمحبة.</p>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>استخدام الفعل الماضي "كان" للدلالة على الاستمرار في الماضي.</p>
+                </div>
+            </div>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    خَدَمَتْهُ عُمراً مِثلَما قَدْ شَاءَ صِدْقاً واستقامَةً
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>الحمامة خدمت سليمان طوال حياتها بصدق وأمانة كما أراد منها، دون تقصير أو خيانة.</p>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>استخدام المصدرين "صدقاً واستقامة" للتأكيد على طريقة الخدمة.</p>
+                </div>
+            </div>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    فمضت إلى عمّاله يوماً تُبَلِّغهم سلامَهُ
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>ذهبت الحمامة يوماً إلى موظفي سليمان لتوصل لهم تحياته وسلامه.</p>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>استخدام "فمضت" يدل على السرعة والحماس في تنفيذ المهمة.</p>
+                </div>
+            </div>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    والكتبُ تحتَ جناحِها كُتِبَتْ لها فيها الكرامَةُ
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>كانت تحمل الرسائل تحت جناحها، وهذه الرسائل تحتوي على أوامر تكريمها وإعطائها مكانة عالية.</p>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>التكرار في "كُتِبَت" و "الكتب" للتأكيد على أهمية هذه الرسائل.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Section 2 Page -->
-    <div id="section2" class="page">
-        <div class="container mx-auto px-4 py-8">
-            <!-- Section Header -->
-            <div class="section-gradient-2 rounded-2xl shadow-lg p-8 mb-8 text-white">
-                <h1 class="text-3xl font-bold mb-4 flex items-center">
-                    👀 المقطع الثاني: فضول الحمامة
-                </h1>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-lg mb-2 large-text">🎯 <strong>الهدف:</strong> تعلم خطر الفضول وعدم احترام الخصوصية</p>
-                        <p class="text-lg mb-2 large-text">📍 <strong>المكان في القصة:</strong> الوسط - تطور الأحداث</p>
-                    </div>
-                    <div>
-                        <p class="text-lg mb-2 large-text">🎭 <strong>الأسلوب البلاغي:</strong> التشويق والتصاعد الدرامي</p>
-                        <p class="text-lg large-text">💎 <strong>القيمة المحورية:</strong> احترام الخصوصية</p>
+        <section id="section2" class="content-section">
+            <h2 class="section-title"><i class="fas fa-eye"></i> المقطع الثاني: فضول الحمامة</h2>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    فأرادتِ الحمقاءُ تعرفُ من رسائله مَرَامَهْ
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>الحمامة أرادت أن تعرف ما في الرسائل، والشاعر يسميها "الحمقاء" لأنها ستفعل شيئاً خاطئاً.</p>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>استخدام كلمة "الحمقاء" للتنبيه مسبقاً على خطأ الحمامة.</p>
+                </div>
+            </div>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    عمدت لأولها وكان إلى خليفتهِ بِرَامَهْ<br>
+                    فرأته يأمرُ فيه عامِلَهُ بتاجٍ للحمامَةْ<br>
+                    ويقول: وفّوها الرعايةَ في الرحيلِ وفي الإقامةْ<br>
+                    ويشير في الثاني بأن تُعطى رياضاً في تهامَةْ<br>
+                    وأتت لثالثها ولم تستحِ أن فضّت ختامَهْ<br>
+                    فرأته يأمرُ أن تكونَ لها على الطيرِ الزعامةْ
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <p>الحمامة فتحت الرسائل واحدة تلو الأخرى وقرأت محتوياتها:</p>
+                    <ul>
+                        <li><strong>الرسالة الأولى:</strong> أمر بصنع تاج للحمامة والاهتمام بها في السفر والإقامة</li>
+                        <li><strong>الرسالة الثانية:</strong> أمر بإعطائها حدائق جميلة في منطقة تهامة</li>
+                        <li><strong>الرسالة الثالثة:</strong> أمر بجعلها ملكة وقائدة على جميع الطيور</li>
+                    </ul>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأسلوب البلاغي:</h3>
+                    <p>التدرج في الكشف عن محتوى الرسائل يخلق التشويق والتصاعد الدرامي.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="content-section">
+            <h2 class="section-title"><i class="fas fa-sad-tear"></i> المقطع الثالث: الندم والعقاب</h2>
+            
+            <div class="verse">
+                <div class="verse-text">
+                    فبكتْ لذاكَ تندُّماً، هيهاتَ لا تجدي الندامةُ<br>
+                    وأتت نبي الله وهي تقول: يا ربَّ السلامةَ!<br>
+                    وقالَتْ: فقدتُ الكتب يا مولاي في أرض اليمامةِ<br>
+                    لتسرّعي لما أتاني البازُ يدفعني أمامه<br>
+                    فأجاب بل جئت الذي كادت تقوم له القيامة<br>
+                    لكن كفاك عقوبةً من خان خانته الكرامة
+                </div>
+                <button class="toggle-explanation">
+                    <i class="fas fa-info-circle"></i> عرض الشرح
+                </button>
+                <div class="verse-explanation">
+                    <h3 class="explanation-title"><i class="fas fa-lightbulb"></i> الشرح:</h3>
+                    <ul>
+                        <li><strong>الندم:</strong> الحمامة ندمت وبكت، لكن الندم لا يمحو الخطأ بعد وقوعه</li>
+                        <li><strong>الكذب:</strong> حاولت الكذب على سليمان بأنها فقدت الرسائل بسبب طائر الباز</li>
+                        <li><strong>كشف الحقيقة:</strong> سليمان عرف الحقيقة وواجهها بما فعلت</li>
+                        <li><strong>العقاب العادل:</strong> العقاب هو فقدان الكرامة والثقة التي كانت تتمتع بها</li>
+                    </ul>
+                    <h3 class="explanation-title"><i class="fas fa-pen-nib"></i> الأساليب البلاغية:</h3>
+                    <ul>
+                        <li><strong>"هيهات":</strong> كلمة تفيد الاستحالة - الندم لا يفيد بعد فوات الأوان</li>
+                        <li><strong>"يا رب السلامة":</strong> تعبير عن الخوف والقلق</li>
+                        <li><strong>"كادت تقوم له القيامة":</strong> مبالغة تدل على عظم الخطأ</li>
+                        <li><strong>"من خان خانته الكرامة":</strong> حكمة وقاعدة عامة</li>
+                    </ul>
+                    <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <h4><i class="fas fa-graduation-cap"></i> الدرس المهم:</h4>
+                        <p>من يخون الأمانة يفقد الثقة والاحترام، والندم وحده لا يكفي لإصلاح الخطأ</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- باقي محتوى المقطع الثاني يبقى كما هو -->
-            
-        </div>
-    </div>
-
-    <!-- Section 3 Page -->
-    <div id="section3" class="page">
-        <div class="container mx-auto px-4 py-8">
-            <!-- Section Header -->
-            <div class="section-gradient-3 rounded-2xl shadow-lg p-8 mb-8 text-white">
-                <h1 class="text-3xl font-bold mb-4 flex items-center">
-                    😢 المقطع الثالث: الندم والعقاب
-                </h1>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-lg mb-2 large-text">🎯 <strong>الهدف:</strong> تعلم أن الأخطاء لها عواقب وأهمية قول الحقيقة</p>
-                        <p class="text-lg mb-2 large-text">📍 <strong>المكان في القصة:</strong> النهاية - الحل والعبرة</p>
-                    </div>
-                    <div>
-                        <p class="text-lg mb-2 large-text">🎭 <strong>الأسلوب البلاغي:</strong> الحوار والحكمة</p>
-                        <p class="text-lg large-text">💎 <strong>القيمة المحورية:</strong> العدالة والمسؤولية</p>
-                    </div>
+        <section id="resources" class="content-section">
+            <div class="resources">
+                <h2><i class="fas fa-link"></i> روابط تعليمية مهمة</h2>
+                <div class="resource-links">
+                    <a href="https://whatsapp.com/channel/0029VamotBKCxoAy3fzUcv3T" class="resource-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> قناة الواتساب التعليمية
+                    </a>
+                    <a href="https://omk811.blogspot.com/2023/10/blog-post.html" class="resource-link" target="_blank">
+                        <i class="fas fa-book"></i> سليمان والحمامة - شرح وملخصات
+                    </a>
                 </div>
             </div>
-
-            <!-- باقي محتوى المقطع الثالث يبقى كما هو -->
-            
-        </div>
+        </section>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 شرح قصيدة سليمان والحمامة - إعداد الأستاذ خليل البلوشي</p>
+            <p>مصمم خصيصاً للصف الخامس - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
 
     <script>
-        // الكود الجافاسكريبت يبقى كما هو
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
+        // التنقل بين الأقسام
+        document.querySelectorAll('.nav-links a, .section-card a, .btn[data-target]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار القسم المطلوب
+                document.getElementById(targetId).classList.add('active');
+                
+                // تحديث القائمة النشطة
+                document.querySelectorAll('.nav-links a').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // التمرير إلى الأعلى
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // عرض/إخفاء الشرح
+        document.querySelectorAll('.toggle-explanation').forEach(button => {
+            button.addEventListener('click', function() {
+                const explanation = this.nextElementSibling;
+                explanation.classList.toggle('active');
+                
+                if (explanation.classList.contains('active')) {
+                    this.innerHTML = '<i class="fas fa-times"></i> إخفاء الشرح';
+                } else {
+                    this.innerHTML = '<i class="fas fa-info-circle"></i> عرض الشرح';
+                }
+            });
+        });
+
+        // إضافة تأثيرات تفاعلية إضافية
+        document.querySelectorAll('.verse').forEach(verse => {
+            verse.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-5px)';
             });
             
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        function toggleExplanation(explanationId) {
-            const explanation = document.getElementById(`explanation-${explanationId}`);
-            explanation.classList.toggle('active');
-        }
-
-        // باقي الدوال تبقى كما هي
+            verse.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
     </script>
 </body>
 </html>
